@@ -18,7 +18,9 @@ function pop(location) {
 }
 
 function send() {
+    if (input.value.replace(' ','') != ''){
     loc = input.value.split(',');
     console.log(loc)
-    pop(loc);
+    pop(loc);   
+    }
 }
