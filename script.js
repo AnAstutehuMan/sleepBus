@@ -1,5 +1,5 @@
-var map;
-var input;
+var map; // Map Object
+var input; // Input Box 
 
 function load() {
     input = document.getElementById('Dest');
@@ -10,7 +10,12 @@ function load() {
         id: 'mapbox.streets',
         accessToken: 'pk.eyJ1IjoibHlubmxvIiwiYSI6ImNrMnMxcGJoNDB2dTMzbm1ieG53dHBrd3QifQ.Rd6I5PvAtpo_ni7AfRNH1w'
     }).addTo(map);
-    L.control.locate(icon = 'location.jpg').addTo(map);
+    L.control.locate().addTo(map);
+    map.on('click',function(e){
+        console.log(e)
+        loc = e.latlng.lat + " , " + e.latlng.lng;
+        input.value = loc;
+    })
 }
 
 function pop(location) {
@@ -19,8 +24,7 @@ function pop(location) {
 
 function send() {
     if (input.value.replace(' ','') != ''){
-    loc = input.value.split(',');
-    console.log(loc)
+    loc = input.value.split(','); // Location infomation from input box
     pop(loc);   
     }
 }
