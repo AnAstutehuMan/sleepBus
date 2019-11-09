@@ -1,5 +1,6 @@
 var map; // Map Object
 var input; // Input Box 
+var marker; //Marker for the destination
 
 function load() {
     input = document.getElementById('Dest');
@@ -19,7 +20,8 @@ function load() {
 }
 
 function pop(location) {
-    L.marker(location).addTo(map).bindPopup('Selected location').openPopup();
+    map.removeLayer(marker);
+    marker = L.marker(location).addTo(map).bindPopup('Selected location').openPopup();
 }
 
 function send() {
