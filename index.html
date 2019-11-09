@@ -20,9 +20,10 @@
   </head>
   <body onload = 'load()'>
     <image src ='Logo_Large.png'></image>
-    <h1> sleepBus </h1>
+    <label id = 'DestLabel'> Destination <input id = "Dest"> </label>
+    <br><br><br><br><br>
     <div id="mainmap"> Unable to Load Map </div>
-    <script >
+    <script>
     var map;
     function load(){
       map = L.map('mainmap').setView([0,0],5);
@@ -30,5 +31,6 @@
       L.control.locate(icon='location.jpg').addTo(map);
 }
     </script>
+    
   </body>
 </html>
