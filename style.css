@@ -1,27 +1,28 @@
-#mainmap{
+#mainmap {
   height: 600px;
   width: 1000px;
   display: block;
   margin: 0 auto;
 }
-body{
+
+body {
   text-align: center;
   font-family: 'Courier New', Courier, monospace;
 }
 
-#DestLabel{
+#DestLabel {
   font-size: 200%;
   display: block;
   margin: 0 auto;
 }
 
-#Dest{
+#Dest {
   font-size: 200%;
   display: block;
   margin: 0 auto;
 }
 
-button{
+button {
   font-size: 200%;
   outline: 0px;
   background-color: #afafaf;
