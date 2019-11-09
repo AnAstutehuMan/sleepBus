@@ -1,10 +1,22 @@
 #mainmap{
-  height: 500px;
-  width: 500px;
+  height: 600px;
+  width: 1000px;
   display: block;
   margin: 0 auto;
 }
 body{
   text-align: center;
   font-family: 'Courier New', Courier, monospace;
+}
+
+#DestLabel{
+  font-size: 300%;
+  display: block;
+  margin: 0 auto;
+}
+
+#Dest{
+  font-size: 300%;
+  display: block;
+  margin: 0 auto;
 }
