@@ -1,8 +1,10 @@
 #mainmap{
   height: 500px;
   width: 500px;
+  text-align: center;
 }
 body{
   text-align: center;
   font-family: 'Courier New', Courier, monospace;
 }
+
