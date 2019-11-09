@@ -24,6 +24,15 @@
 <body onload='load()'>
   <image src='Logo_Large.png'></image>
   <label id='DestLabel'> Destination <input id="Dest"> </label>
+
+  function validateForm() {
+  var x = document.forms["myForm"]["fname"].value;
+  if (x == "") {
+  alert("Name must be filled out");
+  return false;
+  }
+  }
+
   <br><br><br><br><br>
   <div id="mainmap"> Unable to Load Map </div>
   <script>
