@@ -1,6 +1,6 @@
 var map; // Map Object
 var input; // Input Box 
-var marker; //Marker for the destination
+var marker = 'undf'; //Marker for the destination; Set to 'undf' to check if a marker has been set.
 
 function load() {
     input = document.getElementById('Dest');
@@ -20,7 +20,9 @@ function load() {
 }
 
 function pop(location) {
-    map.removeLayer(marker);
+    if (marker != 'undf'){
+        map.removeLayer(marker);
+    }
     marker = L.marker(location).addTo(map).bindPopup('Selected location').openPopup();
 }
 
