@@ -10,13 +10,22 @@ body{
 }
 
 #DestLabel{
-  font-size: 300%;
+  font-size: 200%;
   display: block;
   margin: 0 auto;
 }
 
 #Dest{
-  font-size: 300%;
+  font-size: 200%;
   display: block;
   margin: 0 auto;
+}
+
+button{
+  font-size: 200%;
+  outline: 0px;
+  background-color: #afafaf;
+  border-radius: 10%;
+  text-align: center;
+
 }
