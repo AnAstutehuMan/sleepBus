@@ -7,7 +7,7 @@
 
 body {
   text-align: center;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Roboto Mono', Courier, monospace;
 }
 
 #DestLabel {
@@ -25,11 +25,11 @@ body {
 }
 
 button {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Roboto Mono', Courier, monospace;
   font-size: 300%;
   outline: 0px;
   background-color: #dfdfdf;
-  border-radius: 5%;
+  border-radius: 10%;
   text-align: center;
 
 }
