@@ -83,7 +83,7 @@ function ComputeDistance(current) {
     if (marker != 'undf') {
         lat2 = marker._latlng.lat // Lat of Marker
         lng2 = marker._latlng.lng // Lng of Marker
-        if (getDistance(lat1,lng1,lat2,lng2) < 0.05 && toggleDB == false){            
+        if (getDistance(lat1,lng1,lat2,lng2) < 0.5 && toggleDB == false){            
             toggleDB = true
             alarm.play();
             alert('You are close!');
