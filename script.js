@@ -16,7 +16,7 @@ function load() {
     alarm = document.getElementById('alarm');
     dist = document.getElementById('dist');
     timer = document.getElementById('safeTimerDisplay');
-    runtimer();
+    //runtimer();
     document.getElementById('Alrt').value = alert;
     current_icon = new L.icon({
         iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
@@ -47,16 +47,16 @@ function load() {
     })
 }
 
-function runtimer() {
-    var sec = 3.0;
-    var timerinterval = setInterval(function () {
-        timer.innerHTML = 'Updating in : ' + sec.toFixed(1);
-        sec = sec - 0.1;
-        if (sec < 0) {
-            sec = 3;
-        }
-    }, 100);
-}
+// function runtimer() {
+//     var sec = 3.0;
+//     var timerinterval = setInterval(function () {
+//         timer.innerHTML = 'Updating in : ' + sec.toFixed(1);
+//         sec = sec - 0.1;
+//         if (sec < 0) {
+//             sec = 3;
+//         }
+//     }, 100);
+// }
 
 function pop(location) {
     if (marker != 'undf') {
