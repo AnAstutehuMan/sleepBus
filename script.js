@@ -113,7 +113,9 @@ function UpdateDistance(current) {
         map.removeLayer(current_marker);
     }
     console.log(" Current : " + lat1 + " " + lng1);
-    current_marker = L.marker([lat1, lng1], {icon: current_icon}).addTo(map).bindPopup('Current Location').openPopup();
+    current_marker = L.marker([lat1, lng1], {
+        icon: current_icon
+    }).addTo(map).bindPopup('Current Location').openPopup();
     if (ghostmarker != 'undf') {
         lat2 = ghostmarker.latlng.lat // Lat of Marker
         lng2 = ghostmarker.latlng.lng // Lng of Marker
