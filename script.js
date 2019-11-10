@@ -125,7 +125,6 @@ function UpdateDistance(current) {
     }
 }
 
-
 function UpdateDistance(current) {
     lat1 = current.coords.latitude // Lat of Current Position
     lng1 = current.coords.longitude // Lng of Current Position
