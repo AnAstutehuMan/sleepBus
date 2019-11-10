@@ -19,7 +19,24 @@ footer {
 #buttonsDiv {
   margin-left: auto;
   margin-right: auto;
-  width: 100%;
+}
+
+#startButton {
+  display: inline-block;
+  width: 15%;
+}
+
+#stopButton {
+  display: inline-block;
+  width: 15%;
+}
+
+#startButton:hover {
+  background-color: rgb(197, 197, 197);
+}
+
+#stopButton:hover {
+  background-color: rgb(197, 197, 197);
 }
 
 image {
