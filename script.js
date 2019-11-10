@@ -70,9 +70,11 @@ function deg2rad(deg) {
 
 
 function Track(){
-    current = map.locate() // Current Position
-    lat1 = current.latlng.lat // Lat of Current Position
-    lng1 = current.latlng.lng // Lng of Current Position
+    if (navigator.geolocation){
+        current = navigator.geolocation.getCurrentPosition()
+    }
+    lat1 = current.coords.latitude // Lat of Current Position
+    lng1 = current.coords.longitude // Lng of Current Position
     lat2 = marker.latlng.lat // Lat of Marker
     lng2 = marker.latlng.lng // Lng of Marker
     console.log(getDistance(lat1,lng1,lat2,lng2))
