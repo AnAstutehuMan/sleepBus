@@ -19,6 +19,13 @@ footer {
   font-family: 'Roboto Mono', Courier, monospace;
 }
 
+#buttonsDiv {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
 image {
   text-align: center;
   display: block;
@@ -48,8 +55,7 @@ button {
   font-family: 'Roboto Mono', Courier, monospace;
   font-size: 300%;
   outline: 0px;
-  background-color: #dfdfdf;
+  background-color: #f4f4f4;
   border-radius: 5%;
-  display: block;
   margin: 0 auto;
 }
