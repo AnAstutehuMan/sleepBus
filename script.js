@@ -28,7 +28,7 @@ function load() {
     }).addTo(map);
     map.locate({
         setView: true,
-        maxZoom: 25
+        maxZoom: 22
     })
     //L.control.locate().addTo(map);
     interval = setInterval(Track, 2000)
@@ -37,7 +37,7 @@ function load() {
             navigator.geolocation.getCurrentPosition(UpdateDistance);
         }
         ghostmarker = e;
-        loc = e.latlng.lat + ', ' + e.latlng.lng;
+        loc = e.latlng.lat.toFixed(5) + ', ' + e.latlng.lng.toFixed(5);
         input.innerHTML = loc;
     })
 }

@@ -41,6 +41,12 @@ image {
   margin: 0 auto;
 }
 
+#dist {
+  text-align: center;
+  font-size: 150%;
+  margin: 0 auto;
+}
+
 button {
   text-align: center;
   font-family: 'Roboto Mono', Courier, monospace;
