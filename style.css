@@ -46,14 +46,14 @@ image {
 
 #DestLabel {
   text-align: center;
-  font-size: 200%;
+  font-size: 250%;
   margin: 5px auto;
   width: 95%;
 }
 
 #Dest {
   text-align: center;
-  font-size: 70%;
+  font-size: 300%;
   width: 98%;
   margin: 0 auto;
 }
@@ -68,7 +68,6 @@ image {
 #Alrt {
   text-align: center;
   font-size: 70%;
-  width: 50%;
   margin: 0 auto;
 }
 
