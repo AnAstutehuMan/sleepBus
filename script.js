@@ -36,17 +36,18 @@ function send() {
     if (input.value.replace(' ', '') != '') {
         loc = input.value.split(','); // Location infomation from input box
         pop(loc);
+        document.getElementById('startButton').disabled=true;
+        document.getElementById('stopButton').disabled=false;
     }
-    document.getElementById('startButton').disabled=true;
-    document.getElementById('stopButton').disabled=false;
 }
 
 function stop() {
     if (marker != 'undf') {
         map.removeLayer(marker);
+        document.getElementById('startButton').disabled=false;
+        document.getElementById('stopButton').disabled=true;
     }
-    document.getElementById('startButton').disabled=false;
-    document.getElementById('stopButton').disabled=true;
+    
 }
 
 //Distance Formula
@@ -71,11 +72,20 @@ function deg2rad(deg) {
 
 function Track(){
     if (navigator.geolocation){
-        current = navigator.geolocation.getCurrentPosition()
+        current = navigator.geolocation.getCurrentPosition(ComputeDistance)
     }
+}
+
+function ComputeDistance(current){
     lat1 = current.coords.latitude // Lat of Current Position
     lng1 = current.coords.longitude // Lng of Current Position
-    lat2 = marker.latlng.lat // Lat of Marker
-    lng2 = marker.latlng.lng // Lng of Marker
-    console.log(getDistance(lat1,lng1,lat2,lng2))
+    if (marker != 'undf') {
+        lat2 = marker.latlng.lat // Lat of Marker
+        lng2 = marker.latlng.lng // Lng of Marker
+        console.log(getDistance(lat1,lng1,lat2,lng2))
+    }
+    else{
+        console.log('No Marker')
+    }
 }
+

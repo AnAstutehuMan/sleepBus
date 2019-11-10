@@ -11,6 +11,17 @@ body {
   font-family: 'Roboto Mono', Courier, monospace;
 }
 
+footer{
+  display: block;
+  margin: 0 auto;
+  font-family: 'Roboto Mono', Courier, monospace;
+}
+
+image {
+  display: block;
+  margin: 0 auto;
+}
+
 #DestLabel {
   font-size: 300%;
   display: block;
