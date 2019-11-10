@@ -6,7 +6,8 @@
 }
 
 body {
-  text-align: center;
+  display: block;
+  margin: 0 auto;
   font-family: 'Roboto Mono', Courier, monospace;
 }
 
@@ -17,6 +18,8 @@ body {
 }
 
 #Dest {
+  display: block;
+  margin: 0 auto;
   text-align: center;
   font-size: 100%;
   width: 100%;
@@ -30,6 +33,7 @@ button {
   outline: 0px;
   background-color: #dfdfdf;
   border-radius: 5%;
-  text-align: center;
+  display: block;
+  margin: 0 auto;
 
 }
