@@ -111,7 +111,7 @@ function UpdateDistance(current) {
     if (ghostmarker != 'undf') {
         lat2 = ghostmarker.latlng.lat // Lat of Marker
         lng2 = ghostmarker.latlng.lng // Lng of Marker
-        dist.innerHTML = "Distance from current position : " + getDistance(lat1, lng1, lat2, lng2) + " KM"
+        dist.innerHTML = "Distance from current position : " + getDistance(lat1, lng1, lat2, lng2) + " Mi"
     } else {
         console.log('No Ghost Marker');
     }
