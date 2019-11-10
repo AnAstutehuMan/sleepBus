@@ -6,11 +6,14 @@ var alarm; // Alarm Sound
 var toggleDB = false; //Makes sure the alarm and notification only appears once.
 var dist; //Distance text
 var ghostmarker; //The position where the user clicks
+var current_marker = 'undf';
+var current_icon;
 
 function load() {
     input = document.getElementById('Dest');
     alarm = document.getElementById('alarm');
     dist  = document.getElementById('dist');
+    current_icon = new L.icon({iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',iconSize: [25, 41],iconAnchor: [12, 41],popupAnchor: [1, -34]});
     map = L.map('mainmap').setView([0, 0], 5);
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a       href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -22,7 +25,7 @@ function load() {
         setView: true,
         maxZoom: 25
     })
-    L.control.locate().addTo(map);
+    //L.control.locate().addTo(map);
     interval = setInterval(Track, 1000)
     map.on('click', function (e) {
         if (navigator.geolocation){
@@ -38,7 +41,7 @@ function pop(location) {
     if (marker != 'undf') {
         map.removeLayer(marker);
     }
-    marker = L.marker(location).addTo(map).bindPopup('Selected location').openPopup();
+    marker = L.marker(location).addTo(map).bindPopup('Selected Location').openPopup();
 }
 
 function start() {
@@ -74,6 +77,10 @@ function getDistance(lat1, lon1, lat2, lon2) {
 function ComputeDistance(current) {
     lat1 = current.coords.latitude // Lat of Current Position
     lng1 = current.coords.longitude // Lng of Current Position
+    if (current_marker != 'undf'){
+        map.removeLayer(current_marker);
+    }
+    current_marker = L.marker([lat1,lng1],{icon: current_icon}).addTo(map).bindPopup('Current Location').openPopup();
     if (marker != 'undf') {
         lat2 = marker._latlng.lat // Lat of Marker
         lng2 = marker._latlng.lng // Lng of Marker
@@ -81,6 +88,7 @@ function ComputeDistance(current) {
             toggleDB = true
             alarm.play();
             alert('You are close!');
+            alarm.pause();
         }
     }
     else{
