@@ -37,12 +37,16 @@ function send() {
         loc = input.value.split(','); // Location infomation from input box
         pop(loc);
     }
+    document.getElementById('startButton').disabled=true;
+    document.getElementById('stopButton').disabled=false;
 }
 
 function stop() {
     if (marker != 'undf') {
         map.removeLayer(marker);
     }
+    document.getElementById('startButton').disabled=false;
+    document.getElementById('stopButton').disabled=true;
 }
 
 //Distance Formula
