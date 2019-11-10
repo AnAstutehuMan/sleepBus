@@ -67,7 +67,7 @@ function getDistance(lat1, lon1, lat2, lon2) {
     var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     var d = R * c; // Distance in km
-    return d;
+    return d*0.621371; // Distance in miles
 }
 
 function ComputeDistance(current) {
@@ -94,7 +94,7 @@ function UpdateDistance(current) {
     if (ghostmarker) {
         lat2 = ghostmarker.latlng.lat // Lat of Marker
         lng2 = ghostmarker.latlng.lng // Lng of Marker
-        dist.innerHTML = "Distance from current position : "+getDistance(lat1,lng1,lat2,lng2)+" Km"
+        dist.innerHTML = "Distance from current position : "+getDistance(lat1,lng1,lat2,lng2)+" miles"
     }
     else{
         console.log('No Ghost Marker');
