@@ -37,7 +37,7 @@ function start() {
         loc = input.value.split(','); // Location infomation from input box
         pop(loc);
     }
-    document.getElementById('startButton').disabled = true;
+    document.getElementById('startButton').innerHTML = 'Update'
     document.getElementById('stopButton').disabled = false;
 }
 
@@ -45,7 +45,7 @@ function stop() {
     if (marker != 'undf') {
         map.removeLayer(marker);
     }
-    document.getElementById('startButton').disabled = false;
+    document.getElementById('startButton').innerHTML = 'Start'
     document.getElementById('stopButton').disabled = true;
 }
 
