@@ -12,8 +12,13 @@ var current_icon;
 function load() {
     input = document.getElementById('Dest');
     alarm = document.getElementById('alarm');
-    dist  = document.getElementById('dist');
-    current_icon = new L.icon({iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',iconSize: [25, 41],iconAnchor: [12, 41],popupAnchor: [1, -34]});
+    dist = document.getElementById('dist');
+    current_icon = new L.icon({
+        iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34]
+    });
     map = L.map('mainmap').setView([0, 0], 5);
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a       href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -28,7 +33,7 @@ function load() {
     //L.control.locate().addTo(map);
     interval = setInterval(Track, 1000)
     map.on('click', function (e) {
-        if (navigator.geolocation){
+        if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(UpdateDistance);
         }
         ghostmarker = e;
@@ -59,7 +64,7 @@ function stop() {
         map.removeLayer(marker);
     }
     document.getElementById('startButton').innerHTML = 'Start'
-    document.getElementById('stopButton').disabled = true;  
+    document.getElementById('stopButton').disabled = true;
 }
 
 //Distance Formula
@@ -70,27 +75,28 @@ function getDistance(lat1, lon1, lat2, lon2) {
     var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     var d = R * c; // Distance in km
-    return d*0.621371; // Distance in miles
+    return d * 0.621371; // Distance in miles
 }
 
 function ComputeDistance(current) {
     lat1 = current.coords.latitude // Lat of Current Position
     lng1 = current.coords.longitude // Lng of Current Position
-    if (current_marker != 'undf'){
+    if (current_marker != 'undf') {
         map.removeLayer(current_marker);
     }
-    current_marker = L.marker([lat1,lng1],{icon: current_icon}).addTo(map).bindPopup('Current Location').openPopup();
+    current_marker = L.marker([lat1, lng1], {
+        icon: current_icon
+    }).addTo(map).bindPopup('Current Location').openPopup();
     if (marker != 'undf') {
         lat2 = marker._latlng.lat // Lat of Marker
         lng2 = marker._latlng.lng // Lng of Marker
-        if (getDistance(lat1,lng1,lat2,lng2) < 0.05 && toggleDB == false){            
+        if (getDistance(lat1, lng1, lat2, lng2) < 0.05 && toggleDB == false) {
             toggleDB = true
             alarm.play();
             alert('You are close!');
             alarm.pause()
         }
-    }
-    else{
+    } else {
         console.log('No Marker');
     }
 }
@@ -101,9 +107,8 @@ function UpdateDistance(current) {
     if (ghostmarker) {
         lat2 = ghostmarker.latlng.lat // Lat of Marker
         lng2 = ghostmarker.latlng.lng // Lng of Marker
-        dist.innerHTML = "Distance from current position : "+getDistance(lat1,lng1,lat2,lng2)+" miles"
-    }
-    else{
+        dist.innerHTML = "Distance from current position : " + getDistance(lat1, lng1, lat2, lng2) + " miles"
+    } else {
         console.log('No Ghost Marker');
     }
 }
@@ -114,7 +119,7 @@ function deg2rad(deg) {
 
 
 function Track() {
-    if (navigator.geolocation){
+    if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(ComputeDistance);
     }
 }
