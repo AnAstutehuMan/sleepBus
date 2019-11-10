@@ -6,29 +6,34 @@
 }
 
 body {
+  text-align: center;
   display: block;
   margin: 0 auto;
   font-family: 'Roboto Mono', Courier, monospace;
 }
 
 footer {
+  text-align: center;
   display: block;
   margin: 0 auto;
   font-family: 'Roboto Mono', Courier, monospace;
 }
 
 image {
+  text-align: center;
   display: block;
   margin: 0 auto;
 }
 
 #DestLabel {
+  text-align: center;
   font-size: 300%;
   display: block;
   margin: 0 auto;
 }
 
 #Dest {
+  text-align: center;
   display: block;
   margin: 0 auto;
   text-align: center;
@@ -39,6 +44,7 @@ image {
 }
 
 button {
+  text-align: center;
   font-family: 'Roboto Mono', Courier, monospace;
   font-size: 300%;
   outline: 0px;
