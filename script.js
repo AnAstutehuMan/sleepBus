@@ -98,10 +98,15 @@ function ComputeDistance(current) {
 function UpdateDistance(current) {
     lat1 = current.coords.latitude // Lat of Current Position
     lng1 = current.coords.longitude // Lng of Current Position
-    if (ghostmarker) {
+    if (marker) {
+        lat2 = marker._latlng.lat // Lat of Marker
+        lng2 = marker._latlng.lng // Lng of Marker
+        dist.innerHTML = "Distance from current position : "+getDistance(lat1,lng1,lat2,lng2)+" Km"
+    }
+    else if (ghostmarker) {
         lat2 = ghostmarker.latlng.lat // Lat of Marker
         lng2 = ghostmarker.latlng.lng // Lng of Marker
-        dist.innerHTML = "Distance from current position : "+getDistance(lat1,lng1,lat2,lng2)+" miles"
+        dist.innerHTML = "Distance from current position : "+getDistance(lat1,lng1,lat2,lng2)+" Km"
     }
     else{
         console.log('No Ghost Marker');
@@ -116,5 +121,8 @@ function deg2rad(deg) {
 function Track() {
     if (navigator.geolocation){
         navigator.geolocation.getCurrentPosition(ComputeDistance);
+    }
+    if (navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(UpdateDistance);
     }
 }
