@@ -41,6 +41,20 @@ image {
   margin: 0 auto;
 }
 
+#AlrtLabel {
+  text-align: center;
+  font-size: 200%;
+  margin: 5px auto;
+  width: 95%;
+}
+
+#Alrt {
+  text-align: center;
+  font-size: 70%;
+  width: 50%;
+  margin: 0 auto;
+}
+
 #dist {
   text-align: center;
   font-size: 200%;

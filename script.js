@@ -8,11 +8,13 @@ var dist; //Distance text
 var ghostmarker = 'undf'; //The position where the user clicks
 var current_marker = 'undf';
 var current_icon;
+var alert = 0.5;
 
 function load() {
     input = document.getElementById('Dest');
     alarm = document.getElementById('alarm');
     dist = document.getElementById('dist');
+    document.getElementById('Alrt').value = alert;
     current_icon = new L.icon({
         iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
         iconSize: [25, 41],
@@ -73,10 +75,11 @@ function start() {
 function stop() {
     if (marker != 'undf') {
         map.removeLayer(marker);
+        ghostmarker = 'undf';
+        dist.innerHTML = "Distance from current position: 0 Mi"
     }
     document.getElementById('startButton').innerHTML = 'Start'
     document.getElementById('stopButton').disabled = true;
-    dist.innerHTML = "Distance from current position: 0 Mi";
 }
 
 //Distance Formula
@@ -96,18 +99,25 @@ function ComputeDistance(current) {
     if (current_marker != 'undf') {
         map.removeLayer(current_marker);
     }
-    current_marker = L.marker([lat1, lng1], {
-        icon: current_icon
-    }).addTo(map).bindPopup('Current Location').openPopup();
-    if (marker != 'undf') {
-        lat2 = marker._latlng.lat // Lat of Marker
-        lng2 = marker._latlng.lng // Lng of Marker
-        console.log(getDistance(lat1, lng1, lat2, lng2))
-        if (getDistance(lat1, lng1, lat2, lng2) < 0.5 && toggleDB == false) {
-            toggleDB = true
-            alarm.play();
-            alert('You are close to your destination');
-            alarm.pause()
+
+    function UpdateDistance(current) {
+        alert = document.getElementById('Alrt').value;
+        console.log("Alert Radius : "+alert);
+        lat1 = current.coords.latitude // Lat of Current Position
+        lng1 = current.coords.longitude // Lng of Current Position
+        if (current_marker != 'undf') {
+            map.removeLayer(current_marker);
+        }
+        console.log(" Current : " + lat1 + " " + lng1);
+        current_marker = L.marker([lat1, lng1], {
+            icon: current_icon
+        }).addTo(map).bindPopup('Current Location').openPopup();
+        if (ghostmarker != 'undf') {
+            lat2 = ghostmarker.latlng.lat // Lat of Marker
+            lng2 = ghostmarker.latlng.lng // Lng of Marker
+            dist.innerHTML = "Distance from current position: " + getDistance(lat1, lng1, lat2, lng2) + " Mi"
+        } else {
+            console.log('No Ghost Marker');
         }
     } else {
         console.log('Please add a marker.');
