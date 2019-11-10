@@ -124,6 +124,8 @@ function deg2rad(deg) {
 }
 
 
+
+
 function Track() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(ComputeDistance,function(){alert('Please Enable Location')},{maximumAge:10000, timeout:5000, enableHighAccuracy: true});
