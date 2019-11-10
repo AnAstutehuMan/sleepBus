@@ -46,7 +46,7 @@ function start() {
         loc = input.value.split(','); // Location infomation from input box
         pop(loc);
     }
-    document.getElementById('startButton').innerHTML = 'Update Location'
+    document.getElementById('startButton').innerHTML = 'Update'
     document.getElementById('stopButton').disabled = false;
     toggleDB = false;
 }
