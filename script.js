@@ -70,6 +70,7 @@ function start() {
         loc = input.innerHTML.split(','); // Location infomation from input box
         pop(loc);
     }
+    document.getElementById('DestLabel').innerHTML = 'Destination'
     document.getElementById('startButton').innerHTML = 'Update'
     document.getElementById('stopButton').disabled = false;
     toggleDB = false;
@@ -81,6 +82,7 @@ function stop() {
         ghostmarker = 'undf';
         dist.innerHTML = "Distance from current position: 0 Mi"
     }
+    document.getElementById('DestLabel').innerHTML = ' Chose Destination'
     document.getElementById('startButton').innerHTML = 'Start'
     document.getElementById('stopButton').disabled = true;
 }
