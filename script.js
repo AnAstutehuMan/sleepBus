@@ -94,11 +94,11 @@ function ComputeDistance(current) {
         if (getDistance(lat1, lng1, lat2, lng2) < 0.5 && toggleDB == false) {
             toggleDB = true
             alarm.play();
-            alert('You are close!');
+            alert('You are close to your Destination');
             alarm.pause()
         }
     } else {
-        console.log('No Marker');
+        console.log('Please add a marker.');
     }
 }
 
@@ -115,7 +115,7 @@ function UpdateDistance(current) {
     if (ghostmarker != 'undf') {
         lat2 = ghostmarker.latlng.lat // Lat of Marker
         lng2 = ghostmarker.latlng.lng // Lng of Marker
-        dist.innerHTML = "Distance from current position : " + getDistance(lat1, lng1, lat2, lng2) + " Mi"
+        dist.innerHTML = "Distance from current position: " + getDistance(lat1, lng1, lat2, lng2) + " Mi"
     } else {
         console.log('No Ghost Marker');
     }
@@ -124,9 +124,6 @@ function UpdateDistance(current) {
 function deg2rad(deg) {
     return deg * (Math.PI / 180);
 }
-
-
-
 
 function Track() {
     if (navigator.geolocation) {
