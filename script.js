@@ -101,28 +101,24 @@ function ComputeDistance(current) {
     }
 }
 
-    function UpdateDistance(current) {
-        alert = document.getElementById('Alrt').value;
-        console.log("Alert Radius : " + alert);
-        lat1 = current.coords.latitude // Lat of Current Position
-        lng1 = current.coords.longitude // Lng of Current Position
-        if (current_marker != 'undf') {
-            map.removeLayer(current_marker);
-        }
-        console.log(" Current : " + lat1 + " " + lng1);
-        current_marker = L.marker([lat1, lng1], {
-            icon: current_icon
-        }).addTo(map).bindPopup('Current Location').openPopup();
-        if (ghostmarker != 'undf') {
-            lat2 = ghostmarker.latlng.lat // Lat of Marker
-            lng2 = ghostmarker.latlng.lng // Lng of Marker
-            dist.innerHTML = "Distance from current position: " + getDistance(lat1, lng1, lat2, lng2) + " Mi"
-        } else {
-            console.log('No Ghost Marker');
-        }
-    } else {
-        console.log('Please add a marker.');
+function UpdateDistance(current) {
+    alert = document.getElementById('Alrt').value;
+    console.log("Alert Radius : " + alert);
+    lat1 = current.coords.latitude // Lat of Current Position
+    lng1 = current.coords.longitude // Lng of Current Position
+    if (current_marker != 'undf') {
+        map.removeLayer(current_marker);
     }
+    console.log(" Current : " + lat1 + " " + lng1);
+    current_marker = L.marker([lat1, lng1], {icon: current_icon}).addTo(map).bindPopup('Current Location').openPopup();
+    if (ghostmarker != 'undf') {
+        lat2 = ghostmarker.latlng.lat // Lat of Marker
+        lng2 = ghostmarker.latlng.lng // Lng of Marker
+        dist.innerHTML = "Distance from current position: " + getDistance(lat1, lng1, lat2, lng2) + " Mi"
+    } else {
+        console.log('No Ghost Marker');
+    }
+}
 
 
 function UpdateDistance(current) {
