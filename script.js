@@ -5,7 +5,7 @@ var interval; // The interval for checking location
 var alarm; // Alarm Sound
 var toggleDB = false; //Makes sure the alarm and notification only appears once.
 var dist; //Distance text
-var ghostmarker; //The position where the user clicks
+var ghostmarker = 'undf'; //The position where the user clicks
 var current_marker = 'undf';
 var current_icon;
 
