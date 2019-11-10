@@ -8,7 +8,7 @@ var dist; //Distance text
 var ghostmarker = 'undf'; //The position where the user clicks
 var current_marker = 'undf';
 var current_icon;
-var alert = 0.5;
+var alertd = 0.5;
 var timer; // Timer Display
 
 function load() {
@@ -17,7 +17,7 @@ function load() {
     dist = document.getElementById('dist');
     timer = document.getElementById('safeTimerDisplay');
     //runtimer();
-    document.getElementById('Alrt').value = alert;
+    document.getElementById('Alrt').value = alertd;
     current_icon = new L.icon({
         iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
         iconSize: [25, 41],
@@ -101,33 +101,24 @@ function getDistance(lat1, lon1, lat2, lon2) {
 function ComputeDistance(current) {
     lat1 = current.coords.latitude // Lat of Current Position
     lng1 = current.coords.longitude // Lng of Current Position
-    if (current_marker != 'undf') {
-        map.removeLayer(current_marker);
-    }
-}
-
-function UpdateDistance(current) {
-    alert = document.getElementById('Alrt').value;
-    console.log("Alert Radius : " + alert);
-    lat1 = current.coords.latitude // Lat of Current Position
-    lng1 = current.coords.longitude // Lng of Current Position
-    if (current_marker != 'undf') {
-        map.removeLayer(current_marker);
-    }
-    console.log(" Current : " + lat1 + " " + lng1);
-    current_marker = L.marker([lat1, lng1], {
-        icon: current_icon
-    }).addTo(map).bindPopup('Current Location').openPopup();
-    if (ghostmarker != 'undf') {
-        lat2 = ghostmarker.latlng.lat // Lat of Marker
-        lng2 = ghostmarker.latlng.lng // Lng of Marker
-        dist.innerHTML = "Distance from current position: " + getDistance(lat1, lng1, lat2, lng2) + " Mi"
+    if (marker != 'undf') {
+        lat2 = marker._latlng.lat // Lat of Marker
+        lng2 = marker._latlng.lng // Lng of Marker
     } else {
-        console.log('No Ghost Marker');
+        console.log('No Marker');
+    }
+    if (getDistance(lat1, lng1, lat2, lng2) < alertd && toggleDB == false){
+        toggleDB = true;
+        alarm.play()
+        alert("You are close to your destination!")
+        alarm.pause()
+        stop();
     }
 }
 
 function UpdateDistance(current) {
+    alertd = document.getElementById('Alrt').value;
+    console.log("Alert Radius : " + alert);
     lat1 = current.coords.latitude // Lat of Current Position
     lng1 = current.coords.longitude // Lng of Current Position
     if (current_marker != 'undf') {
