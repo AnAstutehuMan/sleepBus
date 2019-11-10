@@ -32,3 +32,9 @@ function send() {
     pop(loc);   
     }
 }
+
+function stop(){
+    if (marker != 'undf'){
+        map.removeLayer(marker);
+    }
+}
