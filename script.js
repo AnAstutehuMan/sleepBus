@@ -62,10 +62,11 @@ function start() {
 function stop() {
     if (marker != 'undf') {
         map.removeLayer(marker);
+        ghostmarker = 'undf';
+        dist.innerHTML = "Distance from current position: 0 Mi"
     }
     document.getElementById('startButton').innerHTML = 'Start'
     document.getElementById('stopButton').disabled = true;
-    dist.innerHTML = "Distance from current position: 0 Mi";
 }
 
 //Distance Formula
