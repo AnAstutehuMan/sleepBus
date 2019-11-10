@@ -8,13 +8,13 @@ function load() {
     map = L.map('mainmap').setView([0, 0], 5);
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a       href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        maxZoom: 18,
+        maxZoom: 25,
         id: 'mapbox.streets',
         accessToken: 'pk.eyJ1IjoibHlubmxvIiwiYSI6ImNrMnMxcGJoNDB2dTMzbm1ieG53dHBrd3QifQ.Rd6I5PvAtpo_ni7AfRNH1w'
     }).addTo(map);
     map.locate({
         setView: true,
-        maxZoom: 16
+        maxZoom: 25
     })
     L.control.locate().addTo(map);
     interval = setInterval(Track, 1000)
@@ -67,6 +67,9 @@ function ComputeDistance(current){
         lat2 = marker._latlng.lat // Lat of Marker
         lng2 = marker._latlng.lng // Lng of Marker
         console.log(getDistance(lat1,lng1,lat2,lng2))
+        if (getDistance(lat1,lng1,lat2,lng2) < 0.1){
+            alert('You are close!')
+        }
     }
     else{
         console.log('No Marker')
