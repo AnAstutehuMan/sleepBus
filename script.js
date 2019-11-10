@@ -107,7 +107,7 @@ function ComputeDistance(current) {
     } else {
         console.log('No Marker');
     }
-    if (getDistance(lat1, lng1, lat2, lng2) < alertd && toggleDB == false){
+    if (getDistance(lat1, lng1, lat2, lng2) < alertd && toggleDB == false && document.getElementById('startButton').innerHTML == 'Update'){
         toggleDB = true;
         alarm.play()
         alert("You are close to your destination!")
