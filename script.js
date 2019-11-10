@@ -65,8 +65,8 @@ function stop() {
     }
     document.getElementById('startButton').innerHTML = 'Start'
     document.getElementById('stopButton').disabled = true;
-    dist.innerHTML = "Distance from current position: 0 Mi";
-}
+    lat2 = current.coords.latitude // Lat of Destination Position to make distance 0
+    lng2 = current.coords.longitude // Lng of Destination Position
 
 //Distance Formula
 function getDistance(lat1, lon1, lat2, lon2) {
