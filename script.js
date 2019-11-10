@@ -84,9 +84,7 @@ function ComputeDistance(current) {
     if (current_marker != 'undf') {
         map.removeLayer(current_marker);
     }
-    current_marker = L.marker([lat1, lng1], {
-        icon: current_icon
-    }).addTo(map).bindPopup('Current Location').openPopup();
+    current_marker = L.marker([lat1, lng1], {icon: current_icon}).addTo(map).bindPopup('Current Location').openPopup();
     if (marker != 'undf') {
         lat2 = marker._latlng.lat // Lat of Marker
         lng2 = marker._latlng.lng // Lng of Marker
