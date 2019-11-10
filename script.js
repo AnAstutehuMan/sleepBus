@@ -67,7 +67,8 @@ function ComputeDistance(current){
         lat2 = marker._latlng.lat // Lat of Marker
         lng2 = marker._latlng.lng // Lng of Marker
         console.log(getDistance(lat1,lng1,lat2,lng2))
-        if (getDistance(lat1,lng1,lat2,lng2) < 0.1){
+        if (getDistance(lat1,lng1,lat2,lng2) < 0.05){
+            marker = 'undf'
             alert('You are close!')
         }
     }
