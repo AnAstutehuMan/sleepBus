@@ -128,14 +128,14 @@ function deg2rad(deg) {
 function Track() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(ComputeDistance, function () {
-            alert('Please Enable Location')
+            console.log("No Location to Compute Distance");
         }, {
             maximumAge: 10000,
             timeout: 5000,
             enableHighAccuracy: true
         });
         navigator.geolocation.getCurrentPosition(UpdateDistance, function () {
-            alert('Please Enable Location')
+            console.log("No Location to Update Distance");
         }, {
             maximumAge: 10000,
             timeout: 5000,

@@ -29,7 +29,7 @@ image {
 
 #DestLabel {
   text-align: center;
-  font-size: 300%;
+  font-size: 200%;
   margin: 5px auto;
   width: 95%;
 }
@@ -43,14 +43,14 @@ image {
 
 #dist {
   text-align: center;
-  font-size: 150%;
+  font-size: 200%;
   margin: 0 auto;
 }
 
 button {
   text-align: center;
   font-family: 'Roboto Mono', Courier, monospace;
-  font-size: 300%;
+  font-size: 250%;
   outline: 0px;
   background-color: #f4f4f4;
   border-radius: 5%;
