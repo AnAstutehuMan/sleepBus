@@ -4,11 +4,13 @@ var marker = 'undf'; //Marker for the destination; Set to 'undf' to check if a m
 var interval; // The interval for checking location
 var alarm; // Alarm Sound
 var toggleDB = false; //Makes sure the alarm and notification only appears once.
-
+var dist; //Distance text
+var ghostmarker; //The position where the user clicks
 
 function load() {
     input = document.getElementById('Dest');
     alarm = document.getElementById('alarm');
+    dist  = document.getElementById('dist');
     map = L.map('mainmap').setView([0, 0], 5);
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a       href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -23,7 +25,10 @@ function load() {
     L.control.locate().addTo(map);
     interval = setInterval(Track, 1000)
     map.on('click', function (e) {
-        console.log(e)
+        if (navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(UpdateDistance);
+        }
+        ghostmarker = e;
         loc = e.latlng.lat + " , " + e.latlng.lng;
         input.value = loc;
     })
@@ -41,7 +46,7 @@ function start() {
         loc = input.value.split(','); // Location infomation from input box
         pop(loc);
     }
-    document.getElementById('startButton').innerHTML = 'Update'
+    document.getElementById('startButton').innerHTML = 'Update Location'
     document.getElementById('stopButton').disabled = false;
     toggleDB = false;
 }
@@ -72,7 +77,6 @@ function ComputeDistance(current) {
     if (marker != 'undf') {
         lat2 = marker._latlng.lat // Lat of Marker
         lng2 = marker._latlng.lng // Lng of Marker
-        console.log(getDistance(lat1,lng1,lat2,lng2))
         if (getDistance(lat1,lng1,lat2,lng2) < 0.05 && toggleDB == false){            
             toggleDB = true
             alarm.play();
@@ -81,6 +85,19 @@ function ComputeDistance(current) {
     }
     else{
         console.log('No Marker');
+    }
+}
+
+function UpdateDistance(current) {
+    lat1 = current.coords.latitude // Lat of Current Position
+    lng1 = current.coords.longitude // Lng of Current Position
+    if (ghostmarker) {
+        lat2 = ghostmarker.latlng.lat // Lat of Marker
+        lng2 = ghostmarker.latlng.lng // Lng of Marker
+        dist.innerHTML = "Distance from current position : "+getDistance(lat1,lng1,lat2,lng2)+" Km"
+    }
+    else{
+        console.log('No Ghost Marker');
     }
 }
 
