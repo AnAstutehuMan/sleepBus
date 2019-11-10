@@ -9,11 +9,14 @@ var ghostmarker = 'undf'; //The position where the user clicks
 var current_marker = 'undf';
 var current_icon;
 var alert = 0.5;
+var timer; // Timer Display
 
 function load() {
     input = document.getElementById('Dest');
     alarm = document.getElementById('alarm');
     dist = document.getElementById('dist');
+    timer = document.getElementById('safeTimerDisplay');
+    runtimer();
     document.getElementById('Alrt').value = alert;
     current_icon = new L.icon({
         iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
@@ -33,7 +36,7 @@ function load() {
         maxZoom: 22
     })
     //L.control.locate().addTo(map);
-    interval = setInterval(Track, 2000)
+    interval = setInterval(Track, 3000)
     map.on('click', function (e) {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(UpdateDistance);
@@ -44,15 +47,15 @@ function load() {
     })
 }
 
-function timer() {
-    var sec = 2;
-    var timer = setInterval(function () {
-        document.getElementById('safeTimerDisplay').innerHTML = '00:' + sec;
-        sec--;
+function runtimer() {
+    var sec = 3.0;
+    var timerinterval = setInterval(function () {
+        timer.innerHTML = 'Updating in : ' + sec.toFixed(1);
+        sec=sec - 0.1;
         if (sec < 0) {
-            clearInterval(timer);
+            sec = 3;
         }
-    }, 1000);
+    }, 100);
 }
 
 function pop(location) {
