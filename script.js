@@ -51,7 +51,7 @@ function runtimer() {
     var sec = 3.0;
     var timerinterval = setInterval(function () {
         timer.innerHTML = 'Updating in : ' + sec.toFixed(1);
-        sec=sec - 0.1;
+        sec = sec - 0.1;
         if (sec < 0) {
             sec = 3;
         }
