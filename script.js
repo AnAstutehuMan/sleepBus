@@ -99,10 +99,11 @@ function ComputeDistance(current) {
     if (current_marker != 'undf') {
         map.removeLayer(current_marker);
     }
+}
 
     function UpdateDistance(current) {
         alert = document.getElementById('Alrt').value;
-        console.log("Alert Radius : "+alert);
+        console.log("Alert Radius : " + alert);
         lat1 = current.coords.latitude // Lat of Current Position
         lng1 = current.coords.longitude // Lng of Current Position
         if (current_marker != 'undf') {
@@ -122,7 +123,7 @@ function ComputeDistance(current) {
     } else {
         console.log('Please add a marker.');
     }
-}
+
 
 function UpdateDistance(current) {
     lat1 = current.coords.latitude // Lat of Current Position
