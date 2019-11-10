@@ -23,7 +23,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.67.0/L.Control.Locate.min.js"></script>
 
   <!-- Favicon -->
-  <link rel='icon' href='favicon.png' type='image/x-icon' />
+  <link rel='icon' href='Logo_Small_Lite.png' type='image/x-icon' />
 
 
   <!-- Fonts -->
@@ -34,12 +34,22 @@
 </head>
 
 <body onload='load()'>
+
+  <!-- Logo Banner -->
   <image src='Logo_Large.png' width=950px height=300px></image>
+
   <br><br><br>
+
+  <!-- Form -->
   <label id='DestLabel'> Destination <input id="Dest"> </label>
+
+  <!-- Buttons -->
   <button id='startButton' onclick="start()"> Start</button>
   <button id='stopButton' onclick="stop()"> Stop</button>
+
   <br><br><br><br><br>
+
+  <!-- Map from LeafLet -->
   <div id="mainmap"></div>
   <script src='script.js'></script>
 
