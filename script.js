@@ -1,6 +1,7 @@
 var map; // Map Object
 var input; // Input Box 
 var marker = 'undf'; //Marker for the destination; Set to 'undf' to check if a marker has been set.
+var interval; // The interval for checking location
 
 function load() {
     input = document.getElementById('Dest');
@@ -13,6 +14,7 @@ function load() {
     }).addTo(map);
     map.locate({setView: true, maxZoom: 16})
     L.control.locate().addTo(map);
+    interval = setInterval(Track,1000)
     map.on('click',function(e){
         console.log(e)
         loc = e.latlng.lat + " , " + e.latlng.lng;
@@ -41,7 +43,7 @@ function stop(){
 }
 
 //Distance Formula
-function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+function getDistance(lat1,lon1,lat2,lon2) {
     var R = 6371; // Radius of the earth in km
     var dLat = deg2rad(lat2-lat1);  // deg2rad below
     var dLon = deg2rad(lon2-lon1); 
@@ -52,10 +54,20 @@ function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
       ; 
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
     var d = R * c; // Distance in km
+    var d = d / 1000 //Distance in meters
     return d;
   }
   
-  function deg2rad(deg) {
+function deg2rad(deg) {
     return deg * (Math.PI/180)
   }
 
+
+function Track(){
+    current = map.locate() // Current Position
+    lat1 = current.latlng.lat // Lat of Current Position
+    lng1 = current.latlng.lng // Lng of Current Position
+    lat2 = marker.latlng.lat // Lat of Marker
+    lng2 = marker.latlng.lng // Lng of Marker
+    console.log(getDistance(lat1,lng1,lat2,lng2))
+}
