@@ -32,7 +32,7 @@ function pop(location) {
     marker = L.marker(location).addTo(map).bindPopup('Selected location').openPopup();
 }
 
-function send() {
+function start() {
     if (input.value.replace(' ', '') != '') {
         loc = input.value.split(','); // Location infomation from input box
         pop(loc);
