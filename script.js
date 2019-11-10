@@ -94,7 +94,7 @@ function ComputeDistance(current) {
         if (getDistance(lat1, lng1, lat2, lng2) < 0.5 && toggleDB == false) {
             toggleDB = true
             alarm.play();
-            alert('You are close to your Destination');
+            alert('You are close to your destination');
             alarm.pause()
         }
     } else {
