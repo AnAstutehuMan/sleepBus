@@ -56,8 +56,7 @@ function stop() {
         map.removeLayer(marker);
     }
     document.getElementById('startButton').innerHTML = 'Start'
-    document.getElementById('stopButton').disabled = true;
-    alarm.pause()
+    document.getElementById('stopButton').disabled = true;  
 }
 
 //Distance Formula
@@ -81,6 +80,7 @@ function ComputeDistance(current) {
             toggleDB = true
             alarm.play();
             alert('You are close!');
+            alarm.pause()
         }
     }
     else{
