@@ -111,7 +111,7 @@ function UpdateDistance(current) {
     if (ghostmarker != 'undf') {
         lat2 = ghostmarker.latlng.lat // Lat of Marker
         lng2 = ghostmarker.latlng.lng // Lng of Marker
-        dist.innerHTML = "Distance from current position : " + getDistance(lat1, lng1, lat2, lng2) + " KM"
+        dist.innerHTML = "Distance from current position : " + getDistance(lat1, lng1, lat2, lng2) + " M"
     } else {
         console.log('No Ghost Marker');
     }
@@ -124,7 +124,7 @@ function deg2rad(deg) {
 
 function Track() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(ComputeDistance);
-        navigator.geolocation.getCurrentPosition(UpdateDistance);
+        navigator.geolocation.getCurrentPosition(ComputeDistance,function(){alert('Please Enable Location')},{maximumAge:10000, timeout:5000, enableHighAccuracy: true});
+        navigator.geolocation.getCurrentPosition(UpdateDistance,function(){alert('Please Enable Location')},{maximumAge:10000, timeout:5000, enableHighAccuracy: true});
     }
 }
