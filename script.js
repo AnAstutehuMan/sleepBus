@@ -17,8 +17,8 @@ function load() {
         maxZoom: 16
     })
     L.control.locate().addTo(map);
-    interval = setInterval(Track,1000)
-    map.on('click',function(e){
+    interval = setInterval(Track, 1000)
+    map.on('click', function (e) {
         console.log(e)
         loc = e.latlng.lat + " , " + e.latlng.lng;
         input.value = loc;
@@ -36,22 +36,21 @@ function send() {
     if (input.value.replace(' ', '') != '') {
         loc = input.value.split(','); // Location infomation from input box
         pop(loc);
-        document.getElementById('startButton').disabled=true;
-        document.getElementById('stopButton').disabled=false;
     }
+    document.getElementById('startButton').disabled = true;
+    document.getElementById('stopButton').disabled = false;
 }
 
 function stop() {
     if (marker != 'undf') {
         map.removeLayer(marker);
-        document.getElementById('startButton').disabled=false;
-        document.getElementById('stopButton').disabled=true;
     }
-    
+    document.getElementById('startButton').disabled = false;
+    document.getElementById('stopButton').disabled = true;
 }
 
 //Distance Formula
-function getDistance(lat1,lon1,lat2,lon2) {
+function getDistance(lat1, lon1, lat2, lon2) {
     var R = 6371; // Radius of the earth in km
     var dLat = deg2rad(lat2 - lat1); // deg2rad below
     var dLon = deg2rad(lon2 - lon1);
@@ -63,29 +62,18 @@ function getDistance(lat1,lon1,lat2,lon2) {
     var d = R * c; // Distance in km
     var d = d / 1000 //Distance in meters
     return d;
-  }
-  
+}
+
 function deg2rad(deg) {
-    return deg * (Math.PI/180)
-  }
-
-
-function Track(){
-    if (navigator.geolocation){
-        current = navigator.geolocation.getCurrentPosition(ComputeDistance)
-    }
+    return deg * (Math.PI / 180)
 }
 
-function ComputeDistance(current){
-    lat1 = current.coords.latitude // Lat of Current Position
-    lng1 = current.coords.longitude // Lng of Current Position
-    if (marker != 'undf') {
-        lat2 = marker.latlng.lat // Lat of Marker
-        lng2 = marker.latlng.lng // Lng of Marker
-        console.log(getDistance(lat1,lng1,lat2,lng2))
-    }
-    else{
-        console.log('No Marker')
-    }
-}
 
+function Track() {
+    current = map.locate() // Current Position
+    lat1 = current.latlng.lat // Lat of Current Position
+    lng1 = current.latlng.lng // Lng of Current Position
+    lat2 = marker.latlng.lat // Lat of Marker
+    lng2 = marker.latlng.lng // Lng of Marker
+    console.log(getDistance(lat1, lng1, lat2, lng2))
+}
