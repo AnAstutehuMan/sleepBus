@@ -4,14 +4,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
+
   <title>sleepBus</title>
+
   <link href="style.css" rel="stylesheet" type="text/css" />
+
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
     crossorigin="" />
 
-    <link rel='icon' href='favicon.png' type='image/x-icon'/ >
-
+  <link rel='icon' href='favicon.png' type='image/x-icon' />
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -31,7 +33,7 @@
   <image src='Logo_Large.png' width=950px height=300px></image>
   <br><br><br>
   <label id='DestLabel'> Destination <input id="Dest"> </label>
-  <button id='startButton' onclick="send()"> Start Tracking </button>
+  <button id='startButton' onclick="start()"> Start Tracking </button>
   <button id='stopButton' onclick="stop()"> Stop Tracking </button>
   <br><br><br><br><br>
   <div id="mainmap"></div>
@@ -42,6 +44,5 @@
 <footer>
   <h5>sleepBus © 2019. All rights reserved under GNU General Public License v3.0</h5>
 </footer>
-
 
 </html>
