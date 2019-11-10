@@ -37,7 +37,7 @@ function load() {
             navigator.geolocation.getCurrentPosition(UpdateDistance);
         }
         ghostmarker = e;
-        loc = e.latlng.lat + " , " + e.latlng.lng;
+        loc = e.latlng.lat + ', ' + e.latlng.lng;
         input.innerHTML = loc;
     })
 }
@@ -74,8 +74,8 @@ function getDistance(lat1, lon1, lat2, lon2) {
     var dLon = deg2rad(lon2 - lon1);
     var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    var d = R * c; // Distance in km
-    return d * 0.621371; // Distance in miles
+    var d = R*c*0.621371; // Distance in miles
+    return d.toFixed(2); // Truncates to 2 decimal places
 }
 
 function ComputeDistance(current) {
@@ -84,12 +84,11 @@ function ComputeDistance(current) {
     if (current_marker != 'undf') {
         map.removeLayer(current_marker);
     }
-    current_marker = L.marker([lat1, lng1], {
-        icon: current_icon
-    }).addTo(map).bindPopup('Current Location').openPopup();
+    current_marker = L.marker([lat1, lng1], {icon: current_icon}).addTo(map).bindPopup('Current Location').openPopup();
     if (marker != 'undf') {
         lat2 = marker._latlng.lat // Lat of Marker
         lng2 = marker._latlng.lng // Lng of Marker
+        console.log(getDistance(lat1,lng1,lat2,lng2))
         if (getDistance(lat1,lng1,lat2,lng2) < 0.5 && toggleDB == false){            
             toggleDB = true
             alarm.play();
@@ -107,6 +106,7 @@ function UpdateDistance(current) {
     if (current_marker != 'undf'){
         map.removeLayer(current_marker);
     }
+    console.log(" Current : "+lat1+" "+lng1);
     current_marker = L.marker([lat1,lng1],{icon: current_icon}).addTo(map).bindPopup('Current Location').openPopup();
     if (ghostmarker != 'undf') {
         lat2 = ghostmarker.latlng.lat // Lat of Marker
@@ -120,6 +120,8 @@ function UpdateDistance(current) {
 function deg2rad(deg) {
     return deg * (Math.PI / 180);
 }
+
+
 
 
 function Track() {
