@@ -8,8 +8,8 @@ var dist; //Distance text
 var ghostmarker = 'undf'; //The position where the user clicks
 var current_marker = 'undf';
 var current_icon;
-var alert = 0.5;
-var timer; // Timer Display
+var alert = '';
+//var timer; // Timer Display
 
 function load() {
     input = document.getElementById('Dest');
