@@ -1,87 +1,75 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!-- MetaData -->
-    <title>sleepBuzzz</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="Never miss your Destination again" />
-    <meta
-      name="keywords"
-      content="sleepBus, Bus, Notification System, Alert, PWA"
-    />
-    <meta name="author" content="Saketh, Lynn, Belany, Elijah" />
 
-    <!-- CSS -->
-    <link href="style.css" rel="stylesheet" type="text/css" />
+<head>
+  <!-- MetaData -->
+  <title>sleepBuzzz</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="description" content="Never miss your Destination again" />
+  <meta name="keywords" content="sleepBuzzz, Bus, sleepBus, Notification System, Alert, PWA" />
+  <meta name="author" content="Saketh, Lynn, Belany, Elijah" />
 
-    <!-- LeafLet API -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-      crossorigin=""
-    />
-    <script
-      src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-      integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-      crossorigin=""
-    ></script>
+  <!-- CSS -->
+  <link href="style.css" rel="stylesheet" type="text/css" />
 
-    <!-- Favicon -->
-    <link rel="icon" href="Logo_Small_Lite.png" type="image/x-icon" />
+  <!-- LeafLet API -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+    integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+    crossorigin=""></script>
 
-    <!-- Fonts -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto+Mono"
-    />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-  </head>
+  <!-- Favicon -->
+  <link rel="icon" href="Logo_Small_Lite.png" type="image/x-icon" />
 
-  <body onload="load()">
-    <!-- Audio -->
-    <audio src="sleepBuzzz.mp3" id="alarm"></audio>
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
 
-    <!-- Logo Banner -->
-    <header>
-      <image src="Logo_Large.png" width="950px" height="300px"></image>
-    </header>
+<body onload="load()">
+  <!-- Audio -->
+  <audio src="sleepBuzzz.mp3" id="alarm"></audio>
 
-    <br><br><br>
+  <!-- Logo Banner -->
+  <header>
+    <image src="Logo_Large.png" width="950px" height="300px"></image>
+  </header>
 
-    <!-- Form -->
-    <label id="DestLabel">
-      Destination
-      <h3 id="Dest"></h3>
-    </label>
+  <br><br><br>
 
-    <!-- Buttons -->
-    <div id="buttonDiv">
-      <button id="startButton" onclick="start()">Start</button>
-      <button id="stopButton" onclick="stop()">Stop</button>
-    </div>
+  <!-- Form -->
+  <label id="DestLabel">
+    Destination
+    <h3 id="Dest"></h3>
+  </label>
 
-    <br><br><br>
+  <!-- Buttons -->
+  <div id="buttonDiv">
+    <button id="startButton" onclick="start()">Start</button>
+    <button id="stopButton" onclick="stop()">Stop</button>
+  </div>
 
-    <!-- Distance Tracker -->
-    <h3 id="dist">Distance from current position: 0 Mi</h3>
+  <br><br><br>
 
-    <br /><br />
+  <!-- Distance Tracker -->
+  <h3 id="dist">Distance from current position: 0 Mi</h3>
 
-    <!-- Map from LeafLet -->
-    <div id="mainmap"></div>
-    <script src="script.js"></script>
-  </body>
+  <br /><br />
 
-  <footer>
-    <!-- F̶̶̶a̶̶̶k̶̶̶e Real Copyright Statement -->
-    <h5>
-      sleepBuzzz &copy; 2019. All rights reserved under
-      <bold>GNU General Public License v3.0</bold>
-    </h5>
-  </footer>
+  <!-- Map from LeafLet -->
+  <div id="mainmap"></div>
+  <script src="script.js"></script>
+</body>
+
+<footer>
+  <!-- F̶̶̶a̶̶̶k̶̶̶e Real Copyright Statement -->
+  <h5>
+    sleepBuzzz &copy; 2019. All rights reserved under
+    <bold>GNU General Public License v3.0</bold>
+  </h5>
+</footer>
+
 </html>
