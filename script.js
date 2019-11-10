@@ -8,11 +8,13 @@ var dist; //Distance text
 var ghostmarker = 'undf'; //The position where the user clicks
 var current_marker = 'undf';
 var current_icon;
+var alert = 0.5;
 
 function load() {
     input = document.getElementById('Dest');
     alarm = document.getElementById('alarm');
     dist = document.getElementById('dist');
+    document.getElementById('Alrt').value = alert;
     current_icon = new L.icon({
         iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
         iconSize: [25, 41],
@@ -105,6 +107,8 @@ function stop() {
     }
 
     function UpdateDistance(current) {
+        alert = document.getElementById('Alrt').value;
+        console.log("Alert Radius : "+alert);
         lat1 = current.coords.latitude // Lat of Current Position
         lng1 = current.coords.longitude // Lng of Current Position
         if (current_marker != 'undf') {
