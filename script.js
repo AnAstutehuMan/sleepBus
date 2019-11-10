@@ -2,9 +2,13 @@ var map; // Map Object
 var input; // Input Box 
 var marker = 'undf'; //Marker for the destination; Set to 'undf' to check if a marker has been set.
 var interval; // The interval for checking location
+var alarm; // Alarm Sound
+var toggleDB = false; //Makes sure the alarm and notification only appears once.
+
 
 function load() {
     input = document.getElementById('Dest');
+    alarm = document.getElementById('alarm');
     map = L.map('mainmap').setView([0, 0], 5);
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a       href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -39,6 +43,7 @@ function start() {
     }
     document.getElementById('startButton').innerHTML = 'Update'
     document.getElementById('stopButton').disabled = false;
+    toggleDB = false;
 }
 
 function stop() {
@@ -47,6 +52,7 @@ function stop() {
     }
     document.getElementById('startButton').innerHTML = 'Start'
     document.getElementById('stopButton').disabled = true;
+    alarm.pause()
 }
 
 //Distance Formula
@@ -66,23 +72,25 @@ function ComputeDistance(current) {
     if (marker != 'undf') {
         lat2 = marker._latlng.lat // Lat of Marker
         lng2 = marker._latlng.lng // Lng of Marker
-        console.log(getDistance(lat1, lng1, lat2, lng2))
-        if (getDistance(lat1, lng1, lat2, lng2) < 0.05) {
-            marker = 'undf'
-            alert('You are close!')
+        console.log(getDistance(lat1,lng1,lat2,lng2))
+        if (getDistance(lat1,lng1,lat2,lng2) < 0.05 && toggleDB == false){            
+            toggleDB = true
+            alarm.play();
+            alert('You are close!');
         }
-    } else {
-        console.log('No Marker')
+    }
+    else{
+        console.log('No Marker');
     }
 }
 
 function deg2rad(deg) {
-    return deg * (Math.PI / 180)
+    return deg * (Math.PI / 180);
 }
 
 
 function Track() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(ComputeDistance)
+    if (navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(ComputeDistance);
     }
 }
